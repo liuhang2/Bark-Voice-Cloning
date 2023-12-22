@@ -1,0 +1,87 @@
+Loss:
+  MelReconLoss:
+    enable: true
+    params: {loss_type: mae}
+  ProsodyReconLoss:
+    enable: true
+    params: {loss_type: mae}
+Model:
+  KanTtsSAMBERT:
+    optimizer:
+      params:
+        betas: [0.9, 0.98]
+        eps: 1.0e-09
+        lr: 0.001
+        weight_decay: 0.0
+      type: Adam
+    params:
+      MAS: false
+      NSF: true
+      SE: true
+      decoder_attention_dropout: 0.1
+      decoder_dropout: 0.1
+      decoder_ffn_inner_dim: 1024
+      decoder_num_heads: 8
+      decoder_num_layers: 12
+      decoder_num_units: 128
+      decoder_prenet_units: [256, 256]
+      decoder_relu_dropout: 0.1
+      dur_pred_lstm_units: 128
+      dur_pred_prenet_units: [128, 128]
+      embedding_dim: 512
+      emotion_units: 32
+      encoder_attention_dropout: 0.1
+      encoder_dropout: 0.1
+      encoder_ffn_inner_dim: 1024
+      encoder_num_heads: 8
+      encoder_num_layers: 8
+      encoder_num_units: 128
+      encoder_projection_units: 32
+      encoder_relu_dropout: 0.1
+      max_len: 800
+      nsf_f0_global_maximum: 730.0
+      nsf_f0_global_minimum: 30.0
+      nsf_norm_type: global
+      num_mels: 82
+      outputs_per_step: 3
+      postnet_dropout: 0.1
+      postnet_ffn_inner_dim: 512
+      postnet_filter_size: 41
+      postnet_fsmn_num_layers: 4
+      postnet_lstm_units: 128
+      postnet_num_memory_units: 256
+      postnet_shift: 17
+      predictor_dropout: 0.1
+      predictor_ffn_inner_dim: 256
+      predictor_filter_size: 41
+      predictor_fsmn_num_layers: 3
+      predictor_lstm_units: 128
+      predictor_num_memory_units: 128
+      predictor_shift: 0
+      speaker_units: 192
+    scheduler:
+      params: {warmup_steps: 4000}
+      type: NoamLR
+allow_cache: false
+audio_config: {fmax: 8000.0, fmin: 0.0, hop_length: 200, max_norm: 1.0, min_level_db: -100.0,
+  n_fft: 2048, n_mels: 80, norm_type: mean_std, num_workers: 16, phone_level_feature: true,
+  preemphasize: false, ref_level_db: 20, sampling_rate: 16000, symmetric: false, trim_silence: true,
+  trim_silence_threshold_db: 60, wav_normalize: true, win_length: 1000}
+batch_size: 32
+create_time: '2023-12-22 22:27:50'
+eval_interval_steps: 10000000000000000
+git_revision_hash: d16755444c9baf23348213211a5ed9035458ecf0
+grad_norm: 1.0
+linguistic_unit: {cleaners: english_cleaners, lfeat_type_list: 'sy,tone,syllable_flag,word_segment,emo_category,speaker_category',
+  speaker_list: F7}
+log_interval: 10
+log_interval_steps: 50
+model_type: sambert
+modelscope_version: 1.9.2
+num_save_intermediate_results: 4
+num_workers: 4
+pin_memory: false
+remove_short_samples: false
+save_interval_steps: 20
+train_max_steps: 2402001
+train_steps: 2001
