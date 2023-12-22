@@ -81,6 +81,6 @@ with gr.Blocks() as server:
     outputs=[train_dataset_input, infer_name_input]
   )
 
-server.launch(server_port=consts.port, server_name='0.0.0.0')
+server.launch(share=False,server_port=7860)
 
 # 如果需要在线链接，可将最后一行代码改为：server.launch(share=True, show_error=True)
